@@ -1,8 +1,17 @@
 import React from 'react'
+import Auth from './components/Auth'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
 
 const App = () => {
   return (
-    <div className='p-4 bg-cyan-300'>App</div>
+    <BrowserRouter >
+    <Routes>
+      <Route path='/dashboard' element={<Home/>}/>
+      <Route path='/' element={<Auth/>}/>
+    </Routes>
+    
+    </BrowserRouter>
   )
 }
 
