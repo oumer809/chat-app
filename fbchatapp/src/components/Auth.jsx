@@ -1,14 +1,20 @@
 import { signInWithPopup } from 'firebase/auth'
 import React from 'react'
 import { auth, provider } from '../firebase.js'
-import { useNavigate } from 'react-router-dom'
+
+import Cookies from 'universal-cookie'
 
 const Auth = () => {
-    const navigate = useNavigate()
+
+    const cookies = new Cookies();
     const handleGoogle =async () => {
-       const result =  await signInWithPopup(auth, provider);
-       console.log(result)
-        navigate('/dashboard')
+      try {
+         const result =  await signInWithPopup(auth, provider);
+       cookies.set("auth-token", result.user.refreshToken)
+      } catch (error) {
+        console.log(error.message)
+      }
+        
     }
   return (
     <div className='flex h-screen items-center justify-center'>
