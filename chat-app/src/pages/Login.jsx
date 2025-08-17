@@ -1,8 +1,16 @@
 import React from 'react'
+import Layout from './Layout'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div className='flex '>
+        <div className='h-screen '>
+            hello
+        </div>
+        <div>
+            <Layout/>
+        </div>
+    </div>
   )
 }
 
