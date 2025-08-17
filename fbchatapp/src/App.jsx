@@ -3,6 +3,7 @@ import Auth from "./components/Auth";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Cookies from "universal-cookie";
+import Chat from "./components/Chat";
 
 const App = () => {
   const cookies = new Cookies();
@@ -13,7 +14,7 @@ const App = () => {
   if (!isAuth) {
     return (
       <div>
-        <Auth />
+        <Auth setIsAuth={setIsAuth}/>
       </div>
     );
   }
@@ -21,7 +22,7 @@ const App = () => {
     
     <div>
       {room ? (
-        <div>Chat</div>
+        <div><Chat room={room}/></div>
       ) : (
         <div className="flex flex-col items-center justify-center h-screen">
           <div className="bg-gray-600 text-white border-2 border-gray-400  shadomd shadow-cyan-500 p-6 w-64 gap-4  ">
